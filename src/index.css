@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: 'PingFang TC', 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;
+    --color-background: #F8F9FA;
+    --color-foreground: #1A1A1A;
+    --color-primary: #3776AB;
+    --color-card: #FFFFFF;
+    --color-card-foreground: #1A1A1A;
+    --color-border: #DEE2E6;
+    --color-ring: #3776AB;
+    --radius-lg: 4px;
+    --radius-md: 4px;
+    --radius-sm: 2px;
+}
+
+:root {
+    --background: #F8F9FA;
+    --foreground: #1A1A1A;
+    --card: #FFFFFF;
+    --card-foreground: #1A1A1A;
+    --popover: #FFFFFF;
+    --popover-foreground: #1A1A1A;
+    --primary: #3776AB;
+    --primary-foreground: #FFFFFF;
+    --secondary: #E9ECEF;
+    --secondary-foreground: #1A1A1A;
+    --muted: #F1F3F5;
+    --muted-foreground: #6C757D;
+    --accent: #E9ECEF;
+    --accent-foreground: #1A1A1A;
+    --destructive: #E03131;
+    --border: #DEE2E6;
+    --input: #DEE2E6;
+    --ring: #3776AB;
+    --radius: 4px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.section-label {
+  @apply text-[12px] font-bold uppercase tracking-[0.1em] text-[#999] flex items-center mb-5;
+}
+
+.section-label::after {
+  content: '';
+  @apply flex-1 h-[1px] bg-[#E0E0E0] ml-5;
+}
