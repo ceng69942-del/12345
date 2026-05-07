@@ -152,7 +152,7 @@ export function Game() {
         )}
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {(Object.keys(NAMES) as unknown as Choice[]).map((choice) => (
+          {(Object.keys(NAMES).map(Number) as Choice[]).map((choice) => (
             <Button
               key={choice}
               variant="outline"

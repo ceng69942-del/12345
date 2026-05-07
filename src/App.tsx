@@ -143,11 +143,13 @@ export default function App() {
                   </div>
                   
                   <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" size="sm" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white">
-                        <Play className="w-4 h-4 mr-2" /> 播放作品影片
-                      </Button>
-                    </DialogTrigger>
+                    <DialogTrigger
+                      render={
+                        <Button variant="outline" size="sm" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white">
+                          <Play className="w-4 h-4 mr-2" /> 播放作品影片
+                        </Button>
+                      }
+                    />
                     <DialogContent className="max-w-4xl p-0 bg-black border-none overflow-hidden">
                       <DialogHeader className="p-4 bg-zinc-900 text-white">
                         <DialogTitle>Cartoon Animator 5 作品展示</DialogTitle>
@@ -156,9 +158,8 @@ export default function App() {
                         <video 
                           controls 
                           className="w-full h-full"
-                          poster="https://picsum.photos/seed/animation/1280/720"
                         >
-                          <source src="/input_file_0.mp4" type="video/mp4" />
+                          <source src="/input_file_1.mp4" type="video/mp4" />
                           您的瀏覽器不支援影片播放。
                         </video>
                       </div>
