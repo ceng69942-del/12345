@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/Button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
+import { Badge } from '@/components/ui/Badge';
 import { Sword, Shield, Trophy, RotateCcw } from 'lucide-react';
 
 type Choice = 1 | 2 | 3 | 4;

@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, Send, X, Bot, User, Loader2, Minimize2, Maximize2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { ScrollArea } from '@/components/ui/ScrollArea';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 
 interface Message {
   role: 'user' | 'model';
