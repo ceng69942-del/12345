@@ -15,15 +15,15 @@ import {
   Maximize2,
   Bot
 } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { 
   Dialog, 
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
   DialogTrigger 
-} from '@/components/ui/Dialog';
+} from '@/components/ui/dialog';
 import { Game } from './components/Game';
 import { AIChat } from './components/AIChat';
 
