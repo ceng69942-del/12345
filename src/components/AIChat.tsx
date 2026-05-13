@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from "@google/genai";
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, Send, X, Bot, User, Loader2, Minimize2, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 interface Message {
   role: 'user' | 'model';
@@ -39,13 +36,14 @@ export function AIChat() {
     setIsLoading(true);
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: [
-          ...messages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
-          { role: 'user', parts: [{ text: userMessage }] }
-        ],
-        config: {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            ...messages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
+            { role: 'user', parts: [{ text: userMessage }] }
+          ],
           systemInstruction: `
             你現在是曾鴻奇（Hung-Chi Tseng）的 AI 客服助手。
             你的目標是幫助訪客了解曾鴻奇的專業背景、經驗與作品。
@@ -64,10 +62,12 @@ export function AIChat() {
             3. 如果被問到他不會的技能，可以誠實回答他目前專注於 Python 與動畫領域，並持續學習中。
             4. 使用繁體中文回覆。
           `
-        }
+        })
       });
 
-      const aiResponse = response.text || '抱歉，我現在無法回答這個問題。';
+      if (!response.ok) throw new Error('API Error');
+      const data = await response.json();
+      const aiResponse = data.text || '抱歉，我現在無法回答這個問題。';
       setMessages(prev => [...prev, { role: 'model', text: aiResponse }]);
     } catch (error) {
       console.error('AI Chat Error:', error);
